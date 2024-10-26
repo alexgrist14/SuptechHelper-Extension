@@ -1,0 +1,27 @@
+{
+    "manifest_version":3,
+    "version":"0.1",
+    "name":"SuptechHelper",
+    "description": "Универсальный помошник Саптеха",
+    "action": {
+        "default_popup":"index.html",
+        "default_icon": "./assets/suptech_icon.png"
+    },
+    "permissions": ["activeTab","scripting","webRequest","declarativeNetRequest","debugger"],
+    "content_scripts": [
+    {
+      "js": ["scripts/chatterbox.js","scripts/background.js"],
+      "run_at": "document_start",
+      "matches": [
+        "https://supchat.taxi.yandex-team.ru/chat/*"
+      ],
+      "all_frames": true
+    }
+  ],
+  "background":{
+    "service_worker": "scripts/background.js"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ]
+  }
